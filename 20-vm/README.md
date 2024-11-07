@@ -1,11 +1,12 @@
 # VM-based nodes in containerlab
 
-VM nodes integration in containerlab is based on the [hellt/vrnetlab](https://github.com/hellt/vrnetlab) project which is a fork of `vrnetlab/vrnetlab` where things were added to make it work with the container networking.
+VM nodes integration in containerlab is based on the [hellt/vrnetlab](https://github.com/hellt/vrnetlab) project which is a **fork** of `vrnetlab/vrnetlab` where things were added to make it work with the container networking.
 
 Start with cloning the project:
 
 ```bash
-cd ~ && git clone https://github.com/hellt/vrnetlab.git && \
+cd ~
+git clone https://github.com/hellt/vrnetlab.git
 cd ~/vrnetlab
 ```
 
@@ -20,37 +21,39 @@ cp ~/images/c8000v-universalk9_16G_serial.17.11.01a.qcow2 ~/vrnetlab/c8000v/
 Once copied, we can enter in the `~/vrnetlab/c8000v` image and build the container image:
 
 ```bash
-cd ~/vrnetlab/c8000v && make
+cd ~/vrnetlab/c8000v
+make
 ```
 
 Note, that c8000v image will run the VM during the container build time. This is to unpack the image once at build time, instead of doing it every time a container is started. That is why the build time is longer than for SR OS image.
 
 While it is building the image, open another terminal window and proceed with building the SR OS image
 
-The resulting image will be tagged as `vrnetlab/vr-c8000v:17.11.01a`.
+The resulting image will be tagged as `vrnetlab/cisco_c8000v:17.11.01a`.
 
 ## Building Nokia SR OS image
 
 SR OS qcow image is located at `~/images/sros-vm-24.3.R1.qcow2` and should be copied to the `~/vrnetlab/sros/` directory before building the container image.
 
 ```bash
-cp ~/images/sros-vm-24.3.R1.qcow2 ~/vrnetlab/sros/
+cp ~/images/sros-vm-24.7.R1.qcow2 ~/vrnetlab/sros/
 ```
 
 Once copied, we can enter in the `~/vrnetlab/sros` image and build the container image:
 
 ```bash
-cd ~/vrnetlab/sros && make
+cd ~/vrnetlab/sros
+make
 ```
 
-The image will be built and tagged as `vrnetlab/vr-sros:24.3.R1`. The tag is auto-derived from the file name.
+The image will be built and tagged as `vrnetlab/nokia_sros:24.7.R1`. The tag is auto-derived from the file name.
 
 ## Deploying the VM-based nodes lab
 
 With the images built, we can proceed with the lab deployment. First, let's switch back to the lab directory:
 
 ```bash
-cd ~/ac1-workshop/20-vm
+cd ~/clab-workshop/20-vm
 ```
 
 Now lets deploy the lab:
