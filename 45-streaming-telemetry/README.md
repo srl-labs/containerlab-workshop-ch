@@ -18,7 +18,7 @@ The streaming telemetry lab' [topology file](https://github.com/srl-labs/srl-tel
 - customization of the management network
 - use of `defaults` and `kinds` sections to simplify the topology file
 - static management IPs for consistency
-- combination of network OSes and "regular" containerized workfloads like iperf clients, streaming telemetry and logging stack
+- combination of network OSes and "regular" containerized workloads like iperf clients, streaming telemetry and logging stack
 - use of the bind mounts to load the configuration files
 - use of env vars to parametrize the started containers
 - `exec` command to run commands in the started containers
