@@ -1,5 +1,9 @@
 # Streaming Telemetry Lab
 
+> [!CAUTION]
+> Before proceeding, please destroy all other labs to free up the memory  
+> `sudo clab des -c -a` - destroys all running labs and removes their respective lab dirs
+
 When pulling together what we have learned so far, we can build a lab that embodies a lot of what containerlab has to offer. One of the labs that we've built to demonstrate the power of containerlab is the [Streaming Telemetry Lab](https://github.com/srl-labs/srl-telemetry-lab).
 
 To deploy this lab we will use another neat containerlab feature - the ability to deploy a lab by specifying lab's remote URL. For the labs stored as a repo on GitHub we could even use the shorthand syntax:
