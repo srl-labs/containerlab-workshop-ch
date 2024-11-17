@@ -2,7 +2,7 @@
 
 A list of workshop modules. Each module is a self-contained guide that can be followed independently, but it is recommended to go through them in order if you are new to Containerlab.
 
-Use the [official slide deck](TBD) to follow along with the workshop.
+Use the [official slide deck](https://gitlab.com/rdodin/pics/-/wikis/uploads/419c501863a492c9016f0e7b345b1c68/Containerlab_DENOG16_Workshop-export.pdf) to follow along with the workshop.
 
 1. [Containerlab Installation](05-install/README.md) guide
 2. [Basics first](10-basics/README.md)
