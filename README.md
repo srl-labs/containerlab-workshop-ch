@@ -1,4 +1,4 @@
-# Containerlab Workshop at DENOG 16
+# Containerlab Workshop at Sunrise CH
 
 A list of workshop modules. Each module is a self-contained guide that can be followed independently, but it is recommended to go through them in order if you are new to Containerlab.
 
