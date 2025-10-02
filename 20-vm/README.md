@@ -10,30 +10,9 @@ git clone https://github.com/hellt/vrnetlab.git
 cd ~/vrnetlab
 ```
 
-## Building Cisco Catalyst 8000v image
-
-Cisco c8000v qcow image is located at `~/images/c8000v-universalk9_16G_serial.17.11.01a.qcow2` and should be copied to the `~/vrnetlab/c8000v/` directory before building the container image.
-
-```bash
-cp ~/images/c8000v-universalk9_16G_serial.17.11.01a.qcow2 ~/vrnetlab/c8000v/
-```
-
-Once copied, we can enter in the `~/vrnetlab/c8000v` image and build the container image:
-
-```bash
-cd ~/vrnetlab/c8000v
-make
-```
-
-Note, that c8000v image will run the VM during the container build time. This is to unpack the image once at build time, instead of doing it every time a container is started. That is why the build time is longer than for SR OS image.
-
-While it is building the image, open another terminal window and proceed with building the SR OS image
-
-The resulting image will be tagged as `vrnetlab/cisco_c8000v:17.11.01a`.
-
 ## Building Nokia SR OS image
 
-SR OS qcow image is located at `~/images/sros-vm-24.3.R1.qcow2` and should be copied to the `~/vrnetlab/sros/` directory before building the container image.
+SR OS qcow image is located at `~/images/sros-vm-24.7.R1.qcow2` and should be copied to the `~/vrnetlab/sros/` directory before building the container image.
 
 ```bash
 cp ~/images/sros-vm-24.7.R1.qcow2 ~/vrnetlab/sros/
@@ -93,12 +72,6 @@ ssh clab-vm-sros
 ```
 
 No user/password is needed, since username is injected by containerlab as well as the local public key for passwordless SSH access.
-
-To connect to the c8000v node use `admin:admin` credentials:
-
-```bash
-ssh clab-vm-c8000v
-```
 
 ## Configuring the nodes
 
