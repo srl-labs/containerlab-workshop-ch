@@ -1,3 +1,5 @@
+# REPLACE OUTPUTS
+
 # Containerlab Basics
 
 This workshop section introduces you to containerlab basics - topology file, image management workflows and lab lifecycle. It is loosely based on the official [Containerlab quickstart](https://containerlab.dev/quickstart/).
@@ -24,23 +26,25 @@ The repo should be cloned and you should be in the `ac1-workshop` directory as p
 The topology file `basic.clab.yml` defines the lab we are going to use in this basics exercise. It consists of the two nodes:
 
 * Nokia SR Linux
-* Arista cEOS
+* Nokia SR-SIM
 
 The nodes are interconnected with a single link over their respective first Ethernet interfaces.
 
 ```yaml
 name: basic
+
 topology:
   nodes:
     srl:
       kind: nokia_srlinux
       image: ghcr.io/nokia/srlinux
-    ceos:
-      kind: arista_ceos
-      image: ceos:4.32.0F
+
+    srsim:
+      kind: nokia_srsim
+      image: srsim:25.7.R1
 
   links:
-    - endpoints: [srl:e1-1, ceos:eth1]
+    - endpoints: [srl:e1-1, srsim:1/1/c1/1]
 ```
 
 ## Deployment attempt #1
@@ -67,10 +71,10 @@ Pull SR Linux container image (if it has not been pulled during attempt #1):
 docker pull ghcr.io/nokia/srlinux
 ```
 
-Import cEOS image and pay attention to the 2nd argument for the `docker import` command where you have to specify the image:
+Import SR-SIM image and pay attention to the 2nd argument for the `docker import` command where you have to specify the image:
 
 ```bash
-docker import ~/images/cEOS64-lab-4.32.0F.tar.xz ceos:4.32.0F
+docker import ~/images/srsim-25.7.R1.tar.xz srsim:25.7.R1
 ```
 
 Check the local image store again:
@@ -99,7 +103,7 @@ Connect to the Nokia SR Linux node using the container name:
 ssh clab-basic-srl
 ```
 
-Connect to the cEOS node using its IP address (note, the IP might be different in your lab):
+Connect to the SR-SIM node using its IP address (note, the IP might be different in your lab):
 
 ```bash
 ssh admin@172.20.20.3
@@ -123,7 +127,7 @@ cat /etc/ssh/ssh_config.d/clab-basic.conf
 
 ## Checking network connectivity
 
-SR Linux and cEOS are started with their first Ethernet interfaces connected. Check the connectivity between the nodes:
+SR Linux and SR-SIM are started with their first Ethernet interfaces connected. Check the connectivity between the nodes:
 
 The nodes also come up with LLDP enabled, our goal is to verify that the basic network connectivity is working by inspecting
 
