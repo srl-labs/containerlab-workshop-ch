@@ -6,9 +6,9 @@ topology:
       kind: nokia_srlinux
       image: ghcr.io/nokia/srlinux
 
-    ceos:
-      kind: arista_ceos
-      image: ceos:4.32.0F
+    srsim:
+      kind: nokia_srsim
+      image: srsim:25.7.R1
 
   links:
-    - endpoints: [srl:e1-1, ceos:eth1]
+    - endpoints: [srl:e1-1, srsim:1/1/c1/1]
