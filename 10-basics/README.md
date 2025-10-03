@@ -6,11 +6,11 @@ This workshop section introduces you to containerlab basics - topology file, ima
 
 ## Repository
 
-Clone the repository to your workshop VM at DENOG16 tag:
+Clone the repository to your workshop VM at SUNRISEWS tag:
 
 ```bash
 cd ~
-git clone https://github.com/srl-labs/clab-workshop.git -b denog16
+git clone https://github.com/srl-labs/clab-workshop.git -b sunrisews
 cd clab-workshop/10-basics
 ```
 
@@ -42,7 +42,19 @@ topology:
     srsim:
       kind: nokia_srsim
       image: srsim:25.7.R1
-
+      license: /home/user/licenses/license_srsim.txt      
+      startup-config: |
+        /configure card 1 card-type iom-1
+        /configure card 1 mda 1 mda-type me6-100gb-qsfp28
+        /configure card 1 mda 2 mda-type me12-100gb-qsfp28
+        /configure port 1/1/c1 connector breakout c1-100g
+        /configure port 1/1/c1 admin-state enable
+        /configure port 1/1/c1/1 ethernet mode hybrid
+        /configure port 1/1/c1/1 admin-state enable
+        /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-alias
+        /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge receive true
+        /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge transmit true
+        /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address oob admin-state enable     
   links:
     - endpoints: [srl:e1-1, srsim:1/1/c1/1]
 ```
@@ -52,7 +64,7 @@ topology:
 Try to deploy the lab:
 
 ```bash
-sudo containerlab deploy -t basic.clab.yml
+containerlab deploy -t basic.clab.yml
 ```
 
 Deployment fails, why?
@@ -71,10 +83,10 @@ Pull SR Linux container image (if it has not been pulled during attempt #1):
 docker pull ghcr.io/nokia/srlinux
 ```
 
-Import SR-SIM image and pay attention to the 2nd argument for the `docker import` command where you have to specify the image:
+Load the SR-SIM image:
 
 ```bash
-docker import ~/images/srsim-25.7.R1.tar.xz srsim:25.7.R1
+docker load ~/images/srsim.tar.xz
 ```
 
 Check the local image store again:
@@ -83,15 +95,21 @@ Check the local image store again:
 docker images
 ```
 
+Tag the image:
+
+```bash
+docker tag localhost/nokia/srsim:25.7.R1 nokia_srsim:25.7.R1
+```
+
 ## Deployment attempt #2
 
 Now that the images are available, try to deploy the lab again:
 
 ```bash
-sudo containerlab deploy -t basic.clab.yml
+containerlab deploy -t basic.clab.yml
 ```
 
-Note, you can use a shortcut version of the same command - `sudo clab dep -t basic.clab.yml`.
+Note, you can use a shortcut version of the same command - `clab dep -t basic.clab.yml`.
 
 The deployment should succeed.
 
@@ -106,7 +124,7 @@ ssh clab-basic-srl
 Connect to the SR-SIM node using its IP address (note, the IP might be different in your lab):
 
 ```bash
-ssh admin@172.20.20.3
+ssh clab-basic-srsim
 ```
 
 ## Containerlab hosts automation
@@ -146,16 +164,12 @@ The expected output should be:
 ```
 --{ running }--[  ]--
 A:srl# show /system lldp neighbor interface ethernet-1/1
-  +----------+----------+---------+---------+---------+---------+---------+
-  |   Name   | Neighbor | Neighbo | Neighbo | Neighbo | Neighbo | Neighbo |
-  |          |          |    r    |    r    | r First | r Last  | r Port  |
-  |          |          | System  | Chassis | Message | Update  |         |
-  |          |          |  Name   |   ID    |         |         |         |
-  +==========+==========+=========+=========+=========+=========+=========+
-  | ethernet | 00:1C:73 | ceos    | 00:1C:7 | 20      | 16      | Etherne |
-  | -1/1     | :46:95:5 |         | 3:46:95 | hours   | seconds | t1      |
-  |          | C        |         | :5C     | ago     | ago     |         |
-  +----------+----------+---------+---------+---------+---------+---------+
+A:admin@srl# show /system lldp neighbor interface ethernet-1/1
+  +--------------+-------------------+----------------------+---------------------+------------------------+----------------------+----------------------------+
+  |     Name     |     Neighbor      | Neighbor System Name | Neighbor Chassis ID | Neighbor First Message | Neighbor Last Update |       Neighbor Port        |
+  +==============+===================+======================+=====================+========================+======================+============================+
+  | ethernet-1/1 | 1C:C2:01:00:00:00 |                      | 1C:C2:01:00:00:00   | 8 seconds ago          | 4 seconds ago        | 1/1/c1/1, 100-Gig Ethernet |
+  +--------------+-------------------+----------------------+---------------------+------------------------+----------------------+----------------------------+
 ```
 
 ## Listing running labs
@@ -163,50 +177,59 @@ A:srl# show /system lldp neighbor interface ethernet-1/1
 When you are in the directory that contains the lab file, you can list the nodes of that lab simply by running:
 
 ```bash
-[*]─[rd-13]─[~/clab-workshop/10-basics]
+[*]─[vm4]─[~/clab-workshop/10-basics]
 └──> sudo containerlab inspect
-INFO[0000] Parsing & checking topology file: basic.clab.yml
-+---+-----------------+--------------+-----------------------+---------------+---------+----------------+----------------------+
-| # |      Name       | Container ID |         Image         |     Kind      |  State  |  IPv4 Address  |     IPv6 Address     |
-+---+-----------------+--------------+-----------------------+---------------+---------+----------------+----------------------+
-| 1 | clab-basic-ceos | c279d892ea22 | ceos:4.32.0F          | arista_ceos   | running | 172.20.20.2/24 | 2001:172:20:20::2/64 |
-| 2 | clab-basic-srl  | 7c46eb454f51 | ghcr.io/nokia/srlinux | nokia_srlinux | running | 172.20.20.3/24 | 2001:172:20:20::3/64 |
-+---+-----------------+--------------+-----------------------+---------------+---------+----------------+----------------------+
+15:05:06 INFO Parsing & checking topology file=basic.clab.yml
+╭──────────────────┬───────────────────────┬─────────┬───────────────────╮
+│       Name       │       Kind/Image      │  State  │   IPv4/6 Address  │
+├──────────────────┼───────────────────────┼─────────┼───────────────────┤
+│ clab-basic-srl   │ nokia_srlinux         │ running │ 172.20.20.2       │
+│                  │ ghcr.io/nokia/srlinux │         │ 3fff:172:20:20::2 │
+├──────────────────┼───────────────────────┼─────────┼───────────────────┤
+│ clab-basic-srsim │ nokia_srsim           │ running │ 172.20.20.3       │
+│                  │ nokia_srsim:25.7.R1   │         │ 3fff:172:20:20::3 │
+╰──────────────────┴───────────────────────┴─────────┴───────────────────╯
 ```
 
 If the topology file is located in a different directory, you can specify the path to the topology file:
 
 ```bash
-[*]─[rd-13]─[/tmp]
-└──> sudo containerlab inspect -t ~/clab-workshop/10-basics/
-INFO[0000] Parsing & checking topology file: basic.clab.yml
-+---+-----------------+--------------+-----------------------+---------------+---------+----------------+----------------------+
-| # |      Name       | Container ID |         Image         |     Kind      |  State  |  IPv4 Address  |     IPv6 Address     |
-+---+-----------------+--------------+-----------------------+---------------+---------+----------------+----------------------+
-| 1 | clab-basic-ceos | c279d892ea22 | ceos:4.32.0F          | arista_ceos   | running | 172.20.20.2/24 | 2001:172:20:20::2/64 |
-| 2 | clab-basic-srl  | 7c46eb454f51 | ghcr.io/nokia/srlinux | nokia_srlinux | running | 172.20.20.3/24 | 2001:172:20:20::3/64 |
-+---+-----------------+--------------+-----------------------+---------------+---------+----------------+----------------------+
+[*]─[vm4]─[~/clab-workshop/10-basics]
+└──> containerlab inspect -t ~/clab-workshop/10-basics/
+15:05:17 INFO Parsing & checking topology file=basic.clab.yml
+╭──────────────────┬───────────────────────┬─────────┬───────────────────╮
+│       Name       │       Kind/Image      │  State  │   IPv4/6 Address  │
+├──────────────────┼───────────────────────┼─────────┼───────────────────┤
+│ clab-basic-srl   │ nokia_srlinux         │ running │ 172.20.20.2       │
+│                  │ ghcr.io/nokia/srlinux │         │ 3fff:172:20:20::2 │
+├──────────────────┼───────────────────────┼─────────┼───────────────────┤
+│ clab-basic-srsim │ nokia_srsim           │ running │ 172.20.20.3       │
+│                  │ nokia_srsim:25.7.R1   │         │ 3fff:172:20:20::3 │
+╰──────────────────┴───────────────────────┴─────────┴───────────────────╯
 ```
 
 You can also list all running labs regardless of where their topology files are located:
 
 ```bash
-[*]─[rd-13]─[~/clab-workshop/10-basics]
-└──> sudo containerlab inspect --all
-+---+----------------+----------+-----------------+--------------+-----------------------+---------------+---------+----------------+----------------------+
-| # |   Topo Path    | Lab Name |      Name       | Container ID |         Image         |     Kind      |  State  |  IPv4 Address  |     IPv6 Address     |
-+---+----------------+----------+-----------------+--------------+-----------------------+---------------+---------+----------------+----------------------+
-| 1 | basic.clab.yml | basic    | clab-basic-ceos | c279d892ea22 | ceos:4.32.0F          | arista_ceos   | running | 172.20.20.2/24 | 2001:172:20:20::2/64 |
-| 2 |                |          | clab-basic-srl  | 7c46eb454f51 | ghcr.io/nokia/srlinux | nokia_srlinux | running | 172.20.20.3/24 | 2001:172:20:20::3/64 |
-+---+----------------+----------+-----------------+--------------+-----------------------+---------------+---------+----------------+----------------------+
+[*]─[vm4]─[~/clab-workshop/10-basics]
+└──> containerlab inspect --all
+╭────────────────┬──────────┬──────────────────┬───────────────────────┬─────────┬───────────────────╮
+│    Topology    │ Lab Name │       Name       │       Kind/Image      │  State  │   IPv4/6 Address  │
+├────────────────┼──────────┼──────────────────┼───────────────────────┼─────────┼───────────────────┤
+│ basic.clab.yml │ basic    │ clab-basic-srl   │ nokia_srlinux         │ running │ 172.20.20.2       │
+│                │          │                  │ ghcr.io/nokia/srlinux │         │ 3fff:172:20:20::2 │
+│                │          ├──────────────────┼───────────────────────┼─────────┼───────────────────┤
+│                │          │ clab-basic-srsim │ nokia_srsim           │ running │ 172.20.20.3       │
+│                │          │                  │ nokia_srsim:25.7.R1   │         │ 3fff:172:20:20::3 │
+╰────────────────┴──────────┴──────────────────┴───────────────────────┴─────────┴───────────────────╯
 ```
 
 The output will contain all labs and their nodes.
 
 Shortcuts:
 
-* `sudo clab ins` == `sudo containerlab inspect`
-* `sudo clab ins -a` == `sudo containerlab inspect --all`
+* `clab ins` == `sudo containerlab inspect`
+* `clab ins -a` == `sudo containerlab inspect --all`
 
 ## Lab directory
 
@@ -231,13 +254,13 @@ When you are done with the lab, you can destroy it. Containerlab can try and fin
 Try it:
 
 ```bash
-sudo clab des --cleanup
+clab des --cleanup
 ```
 
 Alternatively, you could specify the topology file explicitly:
 
 ```bash
-sudo clab des -t basic.clab.yml --cleanup
+clab des -t basic.clab.yml --cleanup
 ```
 
 The `--cleanup` flag ensures that the lab directory gets removed as well.
