@@ -1,15 +1,18 @@
 name: startup
+
 topology:
   nodes:
     srl:
       kind: nokia_srlinux
       image: ghcr.io/nokia/srlinux
       startup-config: srl.cfg
+
     srsim:
       kind: nokia_srsim
-      image: srsim:25.7.R1
+      image: nokia_srsim:25.7.R1
       license: /home/user/licenses/license_srsim.txt
-      startup-config: srsim.cfg
+      startup-config: srsim.cfg   
 
   links:
     - endpoints: [srl:e1-1, srsim:1/1/c1/1]
+

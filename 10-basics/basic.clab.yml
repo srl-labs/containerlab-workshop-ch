@@ -8,7 +8,7 @@ topology:
 
     srsim:
       kind: nokia_srsim
-      image: srsim:25.7.R1
+      image: nokia_srsim:25.7.R1
       license: /home/user/licenses/license_srsim.txt
       startup-config: |
         /configure card 1 card-type iom-1
