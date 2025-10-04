@@ -21,6 +21,7 @@ topology:
         /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-alias
         /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge receive true
         /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge transmit true
-        /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address oob admin-state enable      
+        /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address oob admin-state enable     
+
   links:
     - endpoints: [srl:e1-1, srsim:1/1/c1/1]
