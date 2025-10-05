@@ -1,9 +1,10 @@
 name: vm
+
 topology:
   nodes:
-    sros:
+    vsim:
       kind: nokia_sros
-      image: vrnetlab/nokia_sros:24.10.R8
+      image: vrnetlab/nokia_sros:24.10.R6
       license: /home/user/licenses/license_vsim.txt
 
     srsim:

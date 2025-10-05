@@ -7,10 +7,10 @@ Startup configuration is a way to provide initial configuration to the lab nodes
 To enter the lab directory, run the following command from anywhere in your terminal:
 
 ```bash
-[*]─[rd-13]─[~]
-└──> cd ~/clab-workshop/15-startup/
+[*]─[vm4]─[~]
+└──> cd ~/clab-workshop_snr/15-startup/
 
-[*]─[rd-13]─[~/clab-workshop/15-startup]
+[*]─[vm4]─[~/clab-workshop_snr/15-startup]
 └──>
 ```
 
@@ -44,6 +44,13 @@ A:srl# show network-instance default protocols bgp neighbor 192.168.1.2
 
 You should see 1 route sent/received for the aforementioned BGP neighbor.
 
+
+To disconnect from the Nokia SR Linux node use:
+
+```bash
+quit
+```
+
 Now, let's connect to the `clab-startup-srsim` node and make sure that it can reach the loopback address announced by the `srl` node.
 
 ```bash
@@ -59,3 +66,10 @@ ping 10.10.10.1
 You should see a successful ping response.
 
 You have successfully deployed the lab with the nodes equipped with the startup configuration. This is a powerful feature that can be used to provision the nodes with the desired configuration when they boot up.
+
+
+To disconnect from the Nokia SR-OS node use:
+
+```bash
+logout
+```

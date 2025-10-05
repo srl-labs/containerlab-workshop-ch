@@ -12,33 +12,48 @@ cd ~/vrnetlab
 
 ## Building Nokia SR OS image
 
-SR OS qcow image is located at `~/images/sros-vm-24.7.R1.qcow2` and should be copied to the `~/vrnetlab/sros/` directory before building the container image.
+SR OS qcow image is located at `~/images/24.10.R6/sros-vsim.qcow2` and should be copied to the `~/vrnetlab/nokia/sros/` directory before building the container image.
 
 ```bash
-cp ~/images/sros-vm-24.7.R1.qcow2 ~/vrnetlab/sros/
+cp ~/images/24.10.R6/sros-vsim.qcow2 ~/vrnetlab/nokia/sros/sros-vm-24.10.R6.qcow2
 ```
 
-Once copied, we can enter in the `~/vrnetlab/sros` image and build the container image:
+Once copied, we can enter in the `~/vrnetlab/nokia/sros` image and build the container image:
 
 ```bash
-cd ~/vrnetlab/sros
+cd ~/vrnetlab/nokia/sros
 make
 ```
 
-The image will be built and tagged as `vrnetlab/nokia_sros:24.7.R1`. The tag is auto-derived from the file name.
+The image will be built and tagged as `vrnetlab/nokia_sros:24.10.R6`. The tag is auto-derived from the file name.
 
+Check what images are available on the system:
+
+```bash
+docker images
+```
+
+Output should look similar to this (IMAGE ID will be different)
+```bash
+[*]─[vm4]─[~/vrnetlab/nokia/sros]
+└──> docker images
+REPOSITORY                           TAG        IMAGE ID       CREATED          SIZE
+vrnetlab/nokia_sros                  24.10.R6   684bb05aa297   37 minutes ago   1.01GB
+ghcr.io/nokia/srlinux                latest     ae21f72bdbc7   3 weeks ago      2.27GB
+nokia_srsim                          25.7.R2    da84681892a3   4 weeks ago      1.97GB
+```
 ## Deploying the VM-based nodes lab
 
 With the images built, we can proceed with the lab deployment. First, let's switch back to the lab directory:
 
 ```bash
-cd ~/clab-workshop/20-vm
+cd ~/clab-workshop_snr/20-vm
 ```
 
 Now lets deploy the lab:
 
 ```bash
-sudo clab dep -c
+clab dep -c 
 ```
 
 ### Monitoring the boot process
@@ -46,7 +61,7 @@ sudo clab dep -c
 You will notice that the lab deployment log will show the following message and the deployment process will appear stuck:
 
 ```
-Waiting for clab-vm-sros to be ready. This may take a while. Monitor boot log with `sudo docker logs -f clab-vm-sros`
+Waiting for clab-vm-sros to be ready. This may take a while. Monitor boot log with `docker logs -f clab-vm-sros`
 ```
 
 This is because containerlab waits for SR OS node to boot and become ready for containerlab to inject SSH keys to enabled passwordless SSH access. To monitor the boot process, you can open a new terminal and run the following command:
@@ -58,10 +73,6 @@ docker logs -f clab-vm-sros
 > the SR OS boot time is approx 3 minutes.
 
 You will see the boot process of the SR OS node as it would have been seen in a terminal connected to the real hardware console.
-
-The same `docker logs` command can be used for the `clab-vm-c8000v` node to monitor the boot log of the Cisco Catalyst 8000v node.
-
-> The c8000v boot time is approx 3 minutes.
 
 ## Connecting to the nodes
 
@@ -75,7 +86,7 @@ No user/password is needed, since username is injected by containerlab as well a
 
 ## Configuring the nodes
 
-### SR OS
+### Nokia vSIM
 
 If not logged in yet, open a new terminal and connect to the SR OS node:
 
@@ -92,7 +103,7 @@ edit-config private
 /configure port 1/1/c1/1 admin-state enable
 /configure port 1/1/c1/1 description "port 1/1/c1/1"
 /configure port 1/1/c1/1 ethernet mode hybrid
-/configure port 1/1/c1/1 { ethernet lldp }
+/configure port 1/1/c1/1 ethernet lldp 
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge notification true
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge receive true
@@ -104,33 +115,50 @@ edit-config private
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address oob admin-state enable
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system admin-state enable
 
-/configure router "Base" interface "toC8kv" { admin-state enable }
-/configure router "Base" interface "toC8kv" { port 1/1/c1/1:0 }
-/configure router "Base" interface "toC8kv" { ipv4 primary address 192.168.1.2 }
-/configure router "Base" interface "toC8kv" { ipv4 primary prefix-length 24 }
+/configure router "Base" interface "toSRSIM" admin-state enable
+/configure router "Base" interface "toSRSIM" port 1/1/c1/1:0
+/configure router "Base" interface "toSRSIM" ipv4 primary address 192.168.1.2
+/configure router "Base" interface "toSRSIM" ipv4 primary prefix-length 24
 commit
 exit all
 ```
 
-### Cisco Catalyst 8000v
+### Nokia SR-SIM
 
 If not logged in yet, open a new terminal and connect to the SR OS node:
 
 ```bash
 # password admin
-ssh clab-vm-c8000v
+ssh clab-vm-vsim
 ```
 
 And paste the following configuration:
 
 ```
-conf t
-lldp run
-interface GigabitEthernet2
-ip address 192.168.1.1 255.255.255.0
-lldp receive
-lldp transmit
-no shutdown
+edit-config private
+/configure port 1/1/c1 admin-state enable
+/configure port 1/1/c1 connector breakout c1-100g
+/configure port 1/1/c1/1 admin-state enable
+/configure port 1/1/c1/1 description "port 1/1/c1/1"
+/configure port 1/1/c1/1 ethernet mode hybrid
+/configure port 1/1/c1/1 ethernet lldp 
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge notification true
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge receive true
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge transmit true
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc true
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs sys-name true
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs sys-desc true
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs sys-cap true
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address oob admin-state enable
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system admin-state enable
+
+/configure router "Base" interface "toVSIM" admin-state enable
+/configure router "Base" interface "toVSIM" port 1/1/c1/1:0
+/configure router "Base" interface "toVSIM" ipv4 primary address 192.168.1.1
+/configure router "Base" interface "toVSIM" ipv4 primary prefix-length 24
+commit
+exit all
 ```
 
 Now we configured the two systems to be able to communicate with each other and enabled LLDP on both sides. Perform a ping from SR OS towards the c8000v node and let it run:
