@@ -11,7 +11,6 @@ topology:
       kind: nokia_srsim
       image: nokia_srsim:25.7.R1
       license: /home/user/licenses/license_srsim.txt
-      startup-config: srsim.partial.cfg   
 
   links:
-    - endpoints: [sros:eth1, srsim:1/1/c1/1]
+    - endpoints: [vsim:eth1, srsim:1/1/c1/1]
