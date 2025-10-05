@@ -2,7 +2,7 @@
 
 > [!CAUTION]
 > Before proceeding, please destroy all other labs to free up the memory  
-> `sudo clab des -c -a` - destroys all running labs and removes their respective lab dirs
+> `clab des -c -a` - destroys all running labs and removes their respective lab dirs
 
 When pulling together what we have learned so far, we can build a lab that embodies a lot of what containerlab has to offer. One of the labs that we've built to demonstrate the power of containerlab is the [Streaming Telemetry Lab](https://github.com/srl-labs/srl-telemetry-lab).
 
@@ -10,7 +10,7 @@ To deploy this lab we will use another neat containerlab feature - the ability t
 
 ```bash
 cd ~
-sudo containerlab deploy -t srl-labs/srl-telemetry-lab
+containerlab deploy -t srl-labs/srl-telemetry-lab
 ```
 
 This will pull down the repository and deploy the lab right away.
@@ -41,11 +41,11 @@ To help you with visualizing the topology, containerlab provides a few graphing 
 
 After you deployed the lab, run the `graph` command:
 
-```
-sudo clab graph
+```bash
+clab graph
 ```
 
-The local web server provided by containerlab will be welcoming you at `http://d<ID>.srexperts.net:50080` where `<ID>` is your ID. The web server will render the deployed topology in an interactive graph that you can sort vertically or horizontally.
+The local web server provided by containerlab will be welcoming you at `http://vm_ip_address:50080` where `<ID>` is your ID. The web server will render the deployed topology in an interactive graph that you can sort vertically or horizontally.
 
 The `group` options on the node level help you to order the lab nodes in the graph.
 
@@ -62,11 +62,9 @@ To combat these limitations, another project has been created in the containerla
 It allows to generate a drawio topology from a containerlab topology and does so with style!
 
 ```bash
-sudo clab graph --drawio --drawio-args "--theme grafana_dark"
+clab graph --drawio -t st.clab.yml --drawio-args "--theme nokia_modern"
 ```
 
 It has many neat options, so please go checkout the readme file at the projects' repo.
 
-### Mermaid
-
-And last graphing option is the mermaid graph that can be very handy when embedding the mermaid graphs in your markdown docs.
+### 
