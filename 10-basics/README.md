@@ -1,5 +1,3 @@
-# REPLACE OUTPUTS
-
 # Containerlab Basics
 
 This workshop section introduces you to containerlab basics - topology file, image management workflows and lab lifecycle. It is loosely based on the official [Containerlab quickstart](https://containerlab.dev/quickstart/).

@@ -79,7 +79,7 @@ If installing the extension on a system without Containerlab installed, the exte
 Let's also create a directory we will work out of.
 
 ```bash
-mkdir ~/srx25
+mkdir ~/clab_vscode
 ```
 
 Enter that folder in VS Code by navigating to the file menu (top left), and select 'Open Folder', and open the folder that was just created.
