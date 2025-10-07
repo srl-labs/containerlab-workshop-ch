@@ -86,7 +86,7 @@ docker pull ghcr.io/nokia/srlinux
 Load the SR-SIM image:
 
 ```bash
-docker load ~/images/25.7.R1/srsim.tar.xz
+docker load -i ~/images/25.7.R1/srsim.tar.xz
 ```
 
 Check the local image store again:
