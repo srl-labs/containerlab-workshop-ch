@@ -92,7 +92,9 @@ At the top-right of the extension panel, you can see some common functions. If y
 
 ![Lab explorer actions](images/explorer-actions-2.png)
 
-Click on the :material-file-plus-outline: icon to open TopoEditor.
+Click on the the "New File" icon to open TopoEditor.
+
+![New File icon](images/new-file-icon.png)
 
 You will be prompted for a path for where to put the new topology file. Type the name you want for your topology.
 
