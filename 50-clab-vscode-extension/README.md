@@ -1,22 +1,9 @@
----
-tags:
-  - VScode
-  - Containerlab
-  - clab
-  - edgeshark
-
----
-
 # VS Code Containerlab Extension
 
-|                               |                                               |
-| ----------------------------- | --------------------------------------------- |
-| **Activity name**             | VScode Containerlab extension                |
-| **Activity ID**               | 44                                            |                                                    
-| **Short Description**         | Learn how to use the Containerlab extension for VS Code to improve your lab workflow. |
-| **Difficulty**                | Beginner                                      |
-| **Tools used**                | [Visual Studio Code](https://code.visualstudio.com/)<br/>[Containershark Plugin](https://github.com/siemens/cshargextcap/tree/v0.10.7)     |
-| **References**                | [VS Code containerlab Extension](https://marketplace.visualstudio.com/items?itemName=srl-labs.vscode-containerlab)<br/>[Containerlab VS Code documentation](https://containerlab.dev/manual/vsc-extension/)<br/>    |
+[Visual Studio Code](https://code.visualstudio.com/)
+[Containershark Plugin](https://github.com/siemens/cshargextcap/tree/v0.10.7)
+[VS Code containerlab Extension](https://marketplace.visualstudio.com/items?itemName=srl-labs.vscode-containerlab)
+[Containerlab VS Code documentation](https://containerlab.dev/manual/vsc-extension/)
 
 
 The **VS Code Containerlab Extension** enhances the Containerlab user experience. Taking advantage of powerful text editing functionality in [Visual Studio Code](https://code.visualstudio.com/), the extension provides an easy way to manage the entire lifecycle of your labs.
@@ -65,27 +52,19 @@ We will first do some basic setup to get the extension up and running.
 
 If you are using Visual Studio code on your own machine, you must connect to the lab environment using the Remote SSH functionality in VS Code, as this is where Containerlab is running.
 
-??? tip "How to use Remote SSH"
-    /// tab | Install SSH
-
+tip "How to use Remote SSH"
+Install SSH
     ![install-ssh](images/1-install-ssh.png)
 
-    ///
-    /// tab | Connect to Host
-
+Connect to Host
     ![connect-host](images/2-connect-host.png)
 
-    ///
-    /// tab | Select SSH host
-
+Select SSH host
     ![ip-address](images/3-ip-address.png)
 
-    ///
-
-!!!info
-    If you are unable to install Visual Studio Code on your laptop. You can use the code-server instance for a browser-based Visual Studio code instance.
-    
-    Simply navigate to `<Group ID>.srexperts.net` in your browser to access the code-server. You can skip the next installation step if using this method.
+# If you are unable to install Visual Studio Code on your laptop. You can use the code-server instance for a browser-based Visual Studio code instance.
+#    
+#    Simply navigate to `<Group ID>.srexperts.net` in your browser to access the code-server. You can skip the next installation step if using this method.
 
 ### Installation of the extension
 
