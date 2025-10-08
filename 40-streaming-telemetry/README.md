@@ -10,7 +10,7 @@ To deploy this lab we will use another neat containerlab feature - the ability t
 
 ```bash
 cd ~
-containerlab deploy -t https://github.com/srl-labs/srl-telemetry-lab.git
+containerlab deploy -t srl-labs/srl-telemetry-lab
 ```
 
 This will pull down the repository and deploy the lab right away.

@@ -1,9 +1,9 @@
 # VS Code Containerlab Extension
 
-[Visual Studio Code](https://code.visualstudio.com/)
-[Containershark Plugin](https://github.com/siemens/cshargextcap/tree/v0.10.7)
-[VS Code containerlab Extension](https://marketplace.visualstudio.com/items?itemName=srl-labs.vscode-containerlab)
-[Containerlab VS Code documentation](https://containerlab.dev/manual/vsc-extension/)
+[Visual Studio Code](https://code.visualstudio.com/)  
+[Containershark Plugin](https://github.com/siemens/cshargextcap/tree/v0.10.7)  
+[VS Code containerlab Extension](https://marketplace.visualstudio.com/items?itemName=srl-labs.vscode-containerlab)  
+[Containerlab VS Code documentation](https://containerlab.dev/manual/vsc-extension/)  
 
 
 The **VS Code Containerlab Extension** enhances the Containerlab user experience. Taking advantage of powerful text editing functionality in [Visual Studio Code](https://code.visualstudio.com/), the extension provides an easy way to manage the entire lifecycle of your labs.
