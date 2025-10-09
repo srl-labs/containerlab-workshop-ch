@@ -267,7 +267,7 @@ Set some significant delay on the e1-1 interface, such as 1 second. You should n
 
 Play around with the other impairments. Set some packet loss, or corruption and check the Wireshark capture. Sky is the limit.
 
-    ![Link impairment editor](images/15-link_impairment_demo.gif)
+![Link impairment editor](images/15-link_impairment_demo.gif)
 
 #### Packet capture
 
