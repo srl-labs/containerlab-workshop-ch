@@ -24,11 +24,15 @@ The aptly named lab explorer is a panel (similar to the file explorer in VS Code
 
 The lab explorer is a tree view, which means you can expand each lab to drill down to containers and their interfaces for further interaction.
 
+   ![tree-view](images/01-annotated-treeview.gif)
+
 ### Visualization and editing
 
 The extension makes it easy to visualize and edit topologies.
 
 You can either edit the YAML file we are all used to using the in-built VS Code editor. The extension also introduces the TopoViewer and TopoEditor tools which respectively give you beautiful GUIs to visualize and create/edit your topologies.
+
+   ![topo-viewer](images/02-topo_viewer_editor.gif)
 
 The extension makes it easy to use existing visualization tools such as the web graph, or [clab-io-draw](https://github.com/srl-labs/clab-io-draw).
 
@@ -36,11 +40,15 @@ The extension makes it easy to use existing visualization tools such as the web 
 
 [Edgeshark](https://github.com/siemens/edgeshark) is a tool which makes container packet capture extremely easy, we have had it available to use with Containerlab for a while, but the experience is made one step easier by having it integrated in the extension making the workflow to initiate a capture extremely fast.
 
+   ![integrated-wireshark](images/03-integrated_wireshark.gif)
+
 ### Link impairments
 
 In Containerlab you are able to set link impairments for your labs. The impairments are delay, jitter, corruption and packet loss. 
 
 The extension simplifies the method of managing these impairments with a table view or quick-input box activated from the tree view. 
+
+   ![link-impairments](images/04-link-impairments.gif)
 
 ## Tasks
 
