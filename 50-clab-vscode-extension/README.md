@@ -55,7 +55,7 @@ If you are using Visual Studio code on your own machine, you must connect to the
 tip "How to use Remote SSH" - Attention: The user for this exercise is "user" and not "clab" as displayed below.
 
 Install SSH
-    ![install-ssh](images/connect-ssh-2.gif)
+    ![install-ssh](images/ssh-connect-2.gif)
 
 Connect to Host
     ![connect-host](images/connect-host.png)
