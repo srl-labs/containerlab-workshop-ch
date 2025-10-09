@@ -6,7 +6,7 @@ A list of workshop modules. Each module is a self-contained guide that can be fo
 2. [Basics first](10-basics/README.md)
 3. [Dealing with startup config](15-startup/README.md)
 4. [VM-based nodes](20-vm/README.md)
-5. [AskAI](30-askai/README.md)
+5. [SR Linux AskAI](30-askai/README.md)
 6. [A lab that has it ~all](45-streaming-telemetry/README.md)
 7. [VS Code extension](50-clab-vscode-extension/README.md)
 
