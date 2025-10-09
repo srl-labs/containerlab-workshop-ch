@@ -52,15 +52,15 @@ We will first do some basic setup to get the extension up and running.
 
 If you are using Visual Studio code on your own machine, you must connect to the lab environment using the Remote SSH functionality in VS Code, as this is where Containerlab is running.
 
-tip "How to use Remote SSH"
+tip "How to use Remote SSH" - Attention: The user for this exercise is "user" and not "clab" as displayed below.
 Install SSH
     ![install-ssh](images/install-ssh.gif)
 
 Connect to Host
-    ![connect-host](images/2-connect-host.png)
+    ![connect-host](images/connect-host.png)
 
 Select SSH host
-    ![ip-address](images/3-ip-address.png)
+    ![ip-address](images/ip-address.png)
 
 # If you are unable to install Visual Studio Code on your laptop. You can use the code-server instance for a browser-based Visual Studio code instance.
 #    
