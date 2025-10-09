@@ -48,7 +48,7 @@ In Containerlab you are able to set link impairments for your labs. The impairme
 
 The extension simplifies the method of managing these impairments with a table view or quick-input box activated from the tree view. 
 
-   ![link-impairments](images/04-link-impairments.gif)
+   ![link-impairments](images/04-link-impairments.png)
 
 ## Tasks
 
@@ -102,9 +102,9 @@ At the top-right of the extension panel, you can see some common functions. If y
 
 ![Lab explorer actions](images/explorer-actions-2.png)
 
-Click on the the "New File" icon to open TopoEditor.
+Launch TopoViewer by clicking on the  icon; or the 'Create topology with TopoViewer' button.
 
-![New File icon](images/new-file-icon.png)
+![Launch Topo Viewer](images/05-launch_topo_viewer_editor.png)
 
 You will be prompted for a path for where to put the new topology file. Type the name you want for your topology.
 
@@ -114,9 +114,11 @@ TopoEditor will now open. On one side of the screen you will see the Containerla
 
 The default topology consists of 2 SR Linux nodes connected back to back.
 
-![TopoEditor](images/topoeditor-splitscreen-2.png)
+![TopoEditor](images/07-topo_viewer_editor_splitscreen.png)
 
 You can click and drag on nodes to move them around, hold right click on nodes or links to open an editor wheel. You can also use left click with the Shift or Alt keys to quickly add/remove nodes/links.
+
+ ![topo-viewer-demo](images/08-topo_viewer_editor_demo.gif)
 
 After getting some usage with the TopoEditor, stick to a basic two-nodes SRL topology, with a single link between the two nodes.
 
@@ -130,7 +132,7 @@ In the lab explorer, you should now see the lab we just created, you can deploy 
     
     Once the lab is running, from here you can also destroy (bring down) or redeploy (restart) your lab.
 
-    ![right-click-deploy](images/deploy-clab-2.png)
+    ![right-click-deploy](images/10-tree_view_deploy.png)
 
 - [x] Enter the `Edit Lab topology` and use the play icon :fontawesome-solid-play: at upper-right corner for the lab management options.
 
@@ -147,13 +149,13 @@ With the lab running, you can expand the lab in the tree view and go all the way
 By hovering on the lab, containers or interfaces you can see a small tooltip which displays some key info, such as node name, image, kind, IP address or interface MAC addresses and MTU.
 
     
-![output](images/output-2.png)
+![output](images/12-post_deploy_screenshot.png)
 
 We can also inspect the lab in the tabular format you may be used to from the Containerlab CLI. This is a great way to quickly take a look at all information of the lab.
 
 Simply right click on the lab name then click **Inspect Lab**
 
-![inspect-clab](images/inspect-2.png)
+![inspect-clab](images/13-inspect_webivew.png)
 
 ### Interact with nodes
 
