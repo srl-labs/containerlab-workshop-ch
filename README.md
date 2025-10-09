@@ -1,4 +1,4 @@
-# Containerlab Workshop at Sunrise CH
+# Containerlab Workshop Switzerland
 
 A list of workshop modules. Each module is a self-contained guide that can be followed independently, but it is recommended to go through them in order if you are new to Containerlab.
 

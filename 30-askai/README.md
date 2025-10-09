@@ -1,6 +1,6 @@
 # Install SRL-GPT and use AskAI
 
-In this lab, you will install SRL-GPT, an AI assistant installed on Nokia’s SR Linux OS that connects to a large language model to let you ask natural-language questions about network configuration, logs, and state. Once installed, you’ll interact with it via prompts prefixed with askai (e.g. askai Which interfaces are up? or askai Show me configured IP interfaces), making it easier to learn SR Linux concepts, explore configuration details, and retrieve operational information without relying on traditional CLI syntax.
+In this lab, you will install SRL-GPT, an AI assistant application installed on Nokia’s SR Linux OS that connects to OpenAI 4o large language model to let you ask natural-language questions about network configuration, logs, and state. Once installed, you’ll interact with it via prompts prefixed with askai (e.g. askai Which interfaces are up? or askai Show me configured IP interfaces), making it easier to learn SR Linux concepts, explore configuration details, and retrieve operational information without relying on traditional CLI syntax.
 
 Start with copying the Containerlab lab-examples to the working directory:
 
@@ -87,4 +87,4 @@ Please go through all terms of end user agreement and Press any key to continue.
 Do you accept the terms (yes/no): yes
 ```
 
-User AskAi to learn SR Linux
+Use AskAi to learn SR Linux.
