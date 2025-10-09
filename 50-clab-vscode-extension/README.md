@@ -248,6 +248,11 @@ Now that the interfaces between the nodes are configured, we can try out the lin
 
 Start a ping between the two nodes, and introduce delay using either of the following methods.
 
+/// tab | srl1
+``` srl-1
+ping 10.1.2.2 -c 2000
+```
+
 1. The impairment editor:
 
     You can navigate to the link impairment editor by right clicking on the node in the tree view and selecting **Link Impairments**. In realtime we should see the ping RTT increase due to the delay.
@@ -258,11 +263,15 @@ Start a ping between the two nodes, and introduce delay using either of the foll
 
     Right-click on the intended interface and select set delay, you will be prompted to set the link delay.
 
-    ![Link impairment editor](images/set-delay-2.png)
+Set some significant delay on the e1-1 interface, such as 1 second. You should notice the time in your ping increase accordingly.
+
+Play around with the other impairments. Set some packet loss, or corruption and check the Wireshark capture. Sky is the limit.
+
+    ![Link impairment editor](images/15-link_impairment_demo.gif)
 
 #### Packet capture
 
-Packet capture is important to see what's going on in your lab. In the extension we can initiate a packet capture by simply clicking on the &nbsp;:simple-wireshark:&nbsp; icon on the interface in the tree view.
+Packet capture is important to see what's going on in your lab. In the extension we can initiate a packet capture by simply clicking on the **Wireshark icon** on the interface in the tree view.
 
 This will only work if you:
 
