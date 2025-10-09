@@ -272,7 +272,7 @@ This will only work if you:
 ??? tip "How to install edgeshark"
     Press `CTRL`+`SHIFT`+`P` to open the command palette. You can then type 'Edgeshark' and select  **Containerlab: Install Edgeshark**. Done.
 
-    ![Install Edgeshark command palette](images/install-edgeshark.png)
+![Install Edgeshark command palette](images/install-edgeshark.png)
 
 
 ![Capture interface](images/capture-interface-2.png)
