@@ -43,10 +43,11 @@ To help you with visualizing the topology, containerlab provides a few graphing 
 After you deployed the lab, run the `graph` command:
 
 ```bash
+cd ~/srl-telemetry-lab/
 clab graph
 ```
 
-The local web server provided by containerlab will be welcoming you at `http://vm_ip_address:50080` where `<ID>` is your ID. The web server will render the deployed topology in an interactive graph that you can sort vertically or horizontally.
+The local web server provided by containerlab will be welcoming you at `http://<vm_ip_address>:50080` where `<vm_ip_address>` is your VM IP address. The web server will render the deployed topology in an interactive graph that you can sort vertically or horizontally.
 
 The `group` options on the node level help you to order the lab nodes in the graph.
 
