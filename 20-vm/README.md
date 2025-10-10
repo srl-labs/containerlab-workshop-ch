@@ -257,11 +257,12 @@ ssh clab-vm-srsim
 
 ```
 [/]
-A:admin@srsim# ping 192.168.1.1 count 2000
-PING 192.168.1.1 56 data bytes
-64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=0.149ms.
-64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.122ms.
-64 bytes from 192.168.1.1: icmp_seq=3 ttl=64 time=0.127ms.
+A:admin@srsim# ping 192.168.1.2 count 2000
+PING 192.168.1.2 56 data bytes
+64 bytes from 192.168.1.2: icmp_seq=1 ttl=64 time=44.8ms.
+64 bytes from 192.168.1.2: icmp_seq=2 ttl=64 time=1.46ms.
+64 bytes from 192.168.1.2: icmp_seq=3 ttl=64 time=1.65ms.
+64 bytes from 192.168.1.2: icmp_seq=4 ttl=64 time=1.94ms.
 ```
 
 Pings are flowing, neat. Let them run in this terminal window, we will need them later.
