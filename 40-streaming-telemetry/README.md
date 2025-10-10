@@ -14,6 +14,7 @@ containerlab deploy -t srl-labs/srl-telemetry-lab
 ```
 
 This will pull down the repository and deploy the lab right away.
+The deployment will take a couple of minutes because several images will be downloaded during the process.
 
 ## Exploring the topology file
 
