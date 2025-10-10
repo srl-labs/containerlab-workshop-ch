@@ -144,7 +144,6 @@ exit all
 If not logged in yet, open a new terminal and connect to the SRSIM SR OS node:
 
 ```bash
-# password admin
 ssh clab-vm-srsim
 ```
 
