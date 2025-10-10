@@ -66,6 +66,15 @@ It allows to generate a drawio topology from a containerlab topology and does so
 ```bash
 clab graph --drawio -t st.clab.yml --drawio-args "--theme nokia_modern"
 ```
+The newly created drawio file can be found in the same folder
+```bash
+[*]─[vm16]─[/]
+└──> cd ~/srl-telemetry-lab/
+
+[*]─[vm16]─[~/srl-telemetry-lab]
+└──> ls
+LICENSE  README.md  clab-st  configs  st.clab.drawio  st.clab.yml  st.clab.yml.annotations.json  streaming-telemetry.drawio  traffic.sh
+```
 
 It has many neat options, so please go checkout the readme file at the projects' repo.
 
