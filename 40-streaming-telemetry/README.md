@@ -73,9 +73,9 @@ The newly created drawio file can be found in the same folder
 
 [*]─[vm16]─[~/srl-telemetry-lab]
 └──> ls
-LICENSE  README.md  clab-st  configs  <span style="color:red; font-weight:bold">st.clab.drawio</span>  st.clab.yml  st.clab.yml.annotations.json  streaming-telemetry.drawio  traffic.sh
+LICENSE  README.md  clab-st  configs  st.clab.drawio  st.clab.yml  st.clab.yml.annotations.json  streaming-telemetry.drawio  traffic.sh
 ```
 
-It has many neat options, so please go checkout the readme file at the projects' repo.
+[clab-io-draw](https://github.com/srl-labs/clab-io-draw has many neat options, so please go checkout the readme file at the projects' repo.
 
 ### 
