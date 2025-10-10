@@ -306,14 +306,14 @@ tcpdump -nni tap1
 ```
 Output tap1:
 ```
-root@vsim:/# tcpdump -nni eth1
+root@vsim:/# tcpdump -nni tap1
 tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
-listening on eth1, link-type EN10MB (Ethernet), snapshot length 262144 bytes
-10:53:29.969801 IP 192.168.1.1 > 192.168.1.2: ICMP echo request, id 250, seq 32779, length 64
-10:53:29.970888 IP 192.168.1.2 > 192.168.1.1: ICMP echo reply, id 250, seq 32779, length 64
-10:53:30.975563 IP 192.168.1.1 > 192.168.1.2: ICMP echo request, id 250, seq 32780, length 64
-10:53:30.977135 IP 192.168.1.2 > 192.168.1.1: ICMP echo reply, id 250, seq 32780, length 64
-10:53:31.971096 IP 192.168.1.1 > 192.168.1.2: ICMP echo request, id 250, seq 32781, length 64
-10:53:31.972231 IP 192.168.1.2 > 192.168.1.1: ICMP echo reply, id 250, seq 32781, length 64
+listening on tap1, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+11:34:43.157413 IP 192.168.1.1 > 192.168.1.2: ICMP echo request, id 250, seq 32772, length 64
+11:34:43.158636 IP 192.168.1.2 > 192.168.1.1: ICMP echo reply, id 250, seq 32772, length 64
+11:34:44.159706 IP 192.168.1.1 > 192.168.1.2: ICMP echo request, id 250, seq 32773, length 64
+11:34:44.160917 IP 192.168.1.2 > 192.168.1.1: ICMP echo reply, id 250, seq 32773, length 64
+11:34:45.162010 IP 192.168.1.1 > 192.168.1.2: ICMP echo request, id 250, seq 32774, length 64
+11:34:45.163327 IP 192.168.1.2 > 192.168.1.1: ICMP echo reply, id 250, seq 32774, length 64
 ```
 
