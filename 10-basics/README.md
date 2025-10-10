@@ -4,7 +4,7 @@ This workshop section introduces you to containerlab basics - topology file, ima
 
 ## Repository
 
-Clone the repository to your workshop VM at SUNRISEWS tag:
+Clone the repository to your workshop VM:
 
 ```bash
 cd ~
