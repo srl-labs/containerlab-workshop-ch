@@ -65,6 +65,8 @@ Try to deploy the lab:
 containerlab deploy -t basic.clab.yml
 ```
 
+Note that the user "user" has the required group permissions; you can run Containerlab commands without using sudo.
+
 Deployment fails, why?
 
 ## Image management
