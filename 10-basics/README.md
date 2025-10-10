@@ -190,7 +190,7 @@ When you are in the directory that contains the lab file, you can list the nodes
 
 ```bash
 [*]─[vm4]─[~/clab-workshop_snr/10-basics]
-└──> sudo containerlab inspect
+└──> containerlab inspect
 15:05:06 INFO Parsing & checking topology file=basic.clab.yml
 ╭──────────────────┬───────────────────────┬─────────┬───────────────────╮
 │       Name       │       Kind/Image      │  State  │   IPv4/6 Address  │
