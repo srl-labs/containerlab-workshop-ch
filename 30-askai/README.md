@@ -62,9 +62,6 @@ A:admin@srl1# quit
 ```
 Connection to clab-srl02-srl1 closed.
 ```
-```bash
-ssh clab-srl02-srl1
-```
 
 ## Configure the askai-server parameters
 
@@ -73,7 +70,11 @@ First, retrieve the openai key which you can find on the server by running the f
 ```bash
 cat ~/keys/openai_key.txt
 ```
-
+Login on clab-srl02-srl1
+```bash
+ssh clab-srl02-srl1
+```
+Configure the AskAI app
 ```bash
 enter candidate
 askai-server openai-key "xxxxxxxxxxxxxxxxxxxxxxxx"
