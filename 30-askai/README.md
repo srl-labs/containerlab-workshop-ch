@@ -27,6 +27,12 @@ clab ins -a
 
 ## Deploying the SRL-GPT app on clab-srl02-srl1
 
+Login on clab-srl02-srl1
+
+```bash
+ssh clab-srl02-srl1
+```
+
 The SRL-GPT app can be installed with a single command 'sudo apt update && sudo apt install -y srlgpt' that is executed in the SR Linux bash.
 
 ```bash
@@ -89,6 +95,33 @@ Accept the terms of the end user aggreement
 Please go through all terms of end user agreement and Press any key to continue...
 
 Do you accept the terms (yes/no): yes
+```
+Example questions:
+```
+A:admin@srl1# askai how can I configure ospf ?
+To configure OSPF on SR Linux, you need to set up the following minimal parameters:
+
+1. Set the OSPF version to either OSPF version 2 or version 3. If you're configuring OSPFv3, you must also specify the address family to be used, either IPv4 or IPv6.
+
+2. Define the OSPF instance ID. This is necessary when configuring multiple instances or if the instance being configured is not the base instance.
+
+3. Define the router ID on the router. This ID is used by both OSPF protocol in the routing table manager. When you configure a new router ID, OSPF is automatically disabled and re-enabled to initialize the new router ID.
+
+4. Create at least one OSPF area.
+
+5. Assign an interface to each OSPF area.
+
+Here is an example of a basic OSPF configuration using CLI flat SET commands:
+
+set / network-instance default protocols ospf instance default admin-state enable
+set / network-instance default protocols ospf instance default version ospf-v2
+set / network-instance default protocols ospf instance default router-id 10.10.10.1
+set / network-instance default protocols ospf instance default area 0.0.0.0 interface ethernet-1/1.10
+set / network-instance default protocols ospf instance default area 0.0.0.0 interface ethernet-1/1.10 interface-type point-to-point
+
+
+This configuration sets the OSPF version to OSPFv2, defines the router ID as 10.10.10.1, creates an OSPF area with the ID 0.0.0.0, and assigns the interface ethernet-1/1.10 to this area. The interface type is set to point-to-point.
+
 ```
 
 Use AskAi to learn SR Linux.
