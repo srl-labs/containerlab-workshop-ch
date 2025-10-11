@@ -1,4 +1,4 @@
-# Containerlab Workshop Switzerland
+# 🇨🇭 Containerlab Workshop Switzerland
 
 A list of workshop modules. Each module is a self-contained guide that can be followed independently; however, the Containerlab installation module must be completed first, as the other labs depend on it and will not work without it. It is also recommended to follow the modules in order if you are new to Containerlab.
 
