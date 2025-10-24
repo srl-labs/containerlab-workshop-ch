@@ -8,9 +8,9 @@ To enter the lab directory, run the following command from anywhere in your term
 
 ```bash
 [*]─[vm4]─[~]
-└──> cd ~/clab_workshop_ch/15-startup/
+└──> cd ~/containerlab-workshop-ch/15-startup/
 
-[*]─[vm4]─[~/clab_workshop_ch/15-startup]
+[*]─[vm4]─[~/containerlab-workshop-ch/15-startup]
 └──>
 ```
 
@@ -25,7 +25,7 @@ clab dep -c
 > Note, that when calling `clab dep -c` the containerlab will try to find the `*.clab.yml` file in the current working directory. If the file is located elsewhere, you can specify the path to the file as an argument to the `clab dep` command.  
 > The `-c` flag stands for `--cleanup` and it will ensure that if the lab is already running, it will be stopped and removed before deploying a new one.
 
-The startup configuration files - [srl.cfg](srl.cfg) and [srsim.cfg](srsim.cfg) - configure the interfaces, IP addressing, loopbacks and BGP peering between SR Linux and SR-OS nodes respectively.
+The startup configuration files - [srl.partial.cfg](srl.partial.cfg) and [srsim.partial.cfg](srsim.partial.cfg) - configure the interfaces, IP addressing, loopbacks and BGP peering between SR Linux and SR-OS nodes respectively.
 
 In particular, the `srl` node is configured to announce its loopback address `10.10.10.1/32` towards the `srsim` node and the `srsim` node is configured to announce its loopback address `10.10.10.2/32` towards the `srl` node.
 

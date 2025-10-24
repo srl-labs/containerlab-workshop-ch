@@ -47,7 +47,7 @@ nokia_srsim                          25.7.R2    da84681892a3   4 weeks ago      
 With the images built, we can proceed with the lab deployment. First, let's switch back to the lab directory:
 
 ```bash
-cd ~/clab_workshop_ch/20-vm
+cd ~/containerlab-workshop-ch/20-vm
 ```
 
 Now lets deploy the lab:
@@ -77,7 +77,7 @@ You will see the boot process of the SR OS vSIM node as it would have been seen 
 Check the running labs and ensure that the vSIM is running
 
 ```
-[x]─[vm4]─[~/clab_workshop_ch/20-vm]
+[x]─[vm4]─[~/containerlab-workshop-ch/20-vm]
 └──> clab ins -a
 ╭─────────────┬──────────┬───────────────┬──────────────────────────────┬───────────┬───────────────────╮
 │   Topology  │ Lab Name │      Name     │          Kind/Image          │   State   │   IPv4/6 Address  │
