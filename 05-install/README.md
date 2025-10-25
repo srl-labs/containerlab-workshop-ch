@@ -1,14 +1,18 @@
 # Containerlab Installation
 
+Containerlab is the new generation of network emulation tools.  
+It is distributed as Linux deb, rpm, and apk packages for both amd64 and arm64 architectures, and can be installed on any Debian- or RHEL-based distribution with a single command in just a few seconds.
+
 ## All In One installer
 
-Installs
+The all in one multi-OS quick setup script installs:
 
 * docker
-* latest containerlab,
+* latest containerlab
 * `gh` cli
 
-all in one, multi-OS installer:
+
+To install all components at once, run the following command on any of the supported OSes:
 
 ```bash
 curl -L http://containerlab.dev/setup | \
