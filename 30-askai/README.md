@@ -91,7 +91,7 @@ Now that the askai-server parameters are configured, you can start asking questi
 A:admin@srl1# askai who are you?
 ```
 
-Accept the terms of the end user aggreement
+Accept the terms of the end user agreement
 ```
 Please go through all terms of end user agreement and Press any key to continue...
 
