@@ -134,7 +134,7 @@ In the lab explorer, you should now see the lab we just created, you can deploy 
 
     ![right-click-deploy](images/10-tree_view_deploy.png)
 
-- [x] Enter the `Edit Lab topology` and use the play icon :fontawesome-solid-play: at upper-right corner for the lab management options.
+- [x] Enter the `Edit Lab topology` and use the play icon &#9654;&#65039; at upper-right corner for the lab management options.
 
     ![play-icon-clab](images/play-icon-clab-2.png)
 
@@ -142,7 +142,7 @@ When the lab deployment starts, a small box will show on the *bottom right* to n
 
 We can click the **View Logs** button of this box to open the **Output** panel and watch all logging and backend command execution.
 
-Looking back at the tree view, you should be able to see the icon colour of the lab change to a &nbsp;:green_circle:&nbsp; when the lab is up and running.
+Looking back at the tree view, you should be able to see the icon colour of the lab change to a green circle <span style="font-size: 20px;">🟢</span> when the lab is up and running. 
 
 With the lab running, you can expand the lab in the tree view and go all the way down to interface level. 
 
@@ -212,11 +212,10 @@ Let's first configure the interfaces on our two SRL nodes.
 
 ![connect-ssh](images/connect-ssh-2.png)
 
-- [x] Configure the IP addresses on the connecting interface between nodes; below you can find a sample.
+- [x] Configure the IP addresses on the connecting interface between nodes. below you can find a sample for both nodes.
 
-/// tab | srl-1
 
-``` srl-1
+```bash
 A:srl-1# enter candidate
  / interface ethernet-1/1 admin-state enable
  / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
@@ -227,10 +226,7 @@ A:srl-1# enter candidate
 A:srl-1# commit now
 ```
 
-///
-/// tab | srl-2
-
-``` srl-2
+``` bash
 A:srl-2# enter candidate
  / interface ethernet-1/1 admin-state enable
  / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
@@ -240,7 +236,7 @@ A:srl-2# enter candidate
  / network-instance default interface ethernet-1/1.0
 A:srl-1# commit now
 ```
-///
+
 
 #### Link impairments
 
@@ -248,8 +244,8 @@ Now that the interfaces between the nodes are configured, we can try out the lin
 
 Start a ping between the two nodes, and introduce delay using either of the following methods.
 
-/// tab | srl1
-``` srl-1
+
+``` bash
 ping 10.1.2.2 -c 2000
 ```
 
@@ -275,11 +271,12 @@ Packet capture is important to see what's going on in your lab. In the extension
 
 This will only work if you:
 
-1. Have Edgeshark installed on your Containerlab system.
+1. Have [Edgeshark](https://containerlab.dev/manual/wireshark/#edgeshark-integration) installed on your Containerlab system.
 2. Have the local [cshargextcap](https://github.com/siemens/cshargextcap/releases/latest) plugin for Wireshark installed locally.
 
-??? tip "How to install edgeshark"
-    Press `CTRL`+`SHIFT`+`P` to open the command palette. You can then type 'Edgeshark' and select  **Containerlab: Install Edgeshark**. Done.
+> [!TIP]
+>"How to install edgeshark"
+>Press `CTRL`+`SHIFT`+`P` to open the command palette. You can then type 'Edgeshark' and select  **Containerlab: Install Edgeshark**. Done.
 
 ![Install Edgeshark command palette](images/install-edgeshark.png)
 
