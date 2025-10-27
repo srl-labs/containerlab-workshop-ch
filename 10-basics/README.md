@@ -127,7 +127,7 @@ To disconnect from the Nokia SR Linux node use:
 quit
 ```
 
-Connect to the SR-SIM node using the conatiner name or its IP address (note that the IP might be different in each lab):
+Connect to the SR-SIM node using the container name or its IP address (note that the IP might be different in each lab):
 
 ```bash
 ssh admin@clab-basic-srsim
