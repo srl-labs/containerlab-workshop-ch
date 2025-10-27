@@ -1,6 +1,7 @@
 # VM-based nodes in containerlab
 
-VM nodes integration in containerlab is based on the [hellt/vrnetlab](https://github.com/hellt/vrnetlab) project which is a **fork** of `vrnetlab/vrnetlab` where things were added to make it work with the container networking.
+VM nodes integration in containerlab is based on the [hellt/vrnetlab](https://github.com/hellt/vrnetlab) project which is a **fork** of `vrnetlab/vrnetlab` where things were added to make it work with the container networking.  
+For more detail refer to the [CLAB VM-based routers integration](https://containerlab.dev/manual/vrnetlab/).
 
 Start with cloning the project:
 
@@ -314,5 +315,11 @@ listening on tap1, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 11:34:44.160917 IP 192.168.1.2 > 192.168.1.1: ICMP echo reply, id 250, seq 32773, length 64
 11:34:45.162010 IP 192.168.1.1 > 192.168.1.2: ICMP echo request, id 250, seq 32774, length 64
 11:34:45.163327 IP 192.168.1.2 > 192.168.1.1: ICMP echo reply, id 250, seq 32774, length 64
+```
+
+From vSIM node's container shell you may access to the vSIM console using telnet to localhost port 5000. This may be useful for troubleshooting.  
+Test login to the vSIM with:
+```
+telnet localhost 5000
 ```
 
