@@ -118,21 +118,22 @@ The deployment should succeed.
 Connect to the Nokia SR Linux node using the container name:
 
 ```bash
-ssh clab-basic-srl
+ssh admin@clab-basic-srl
 ```
-
+The default SRL credentials are: admin/NokiaSrl1!  
 To disconnect from the Nokia SR Linux node use:
 
 ```bash
 quit
 ```
 
-Connect to the SR-SIM node using its IP address (note, the IP might be different in your lab):
+Connect to the SR-SIM node using the conatiner name or its IP address (note that the IP might be different in each lab):
 
 ```bash
-ssh clab-basic-srsim
+ssh admin@clab-basic-srsim
 ```
 
+The default SR-SIM credentials are: admin/NokiaSros1!  
 To disconnect from the Nokia SR-OS node use:
 
 ```bash
