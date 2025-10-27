@@ -13,7 +13,7 @@ A list of workshop modules. Each module is a self-contained guide that can be fo
 Did you love this workshop? Let us know in the comments of this [LinkedIn post](TBD).
 
 References:
--  [Containerlab](https://containerlab.dev/): https://containerlab.dev/
--  [SR-LABS](https://github.com/srl-labs): https://github.com/srl-labs
--  [Learn SR Linux](https://learn.srlinux.dev/): https://learn.srlinux.dev/
--  [CLAB Discord](https://discord.gg/vAyddtaEV9): https://discord.gg/vAyddtaEV9
+-  [Containerlab](https://containerlab.dev/)
+-  [SR-LABS](https://github.com/srl-labs)
+-  [Learn SR Linux](https://learn.srlinux.dev/)
+-  [CLAB Discord](https://discord.gg/vAyddtaEV9)
