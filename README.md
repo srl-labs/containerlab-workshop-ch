@@ -14,6 +14,6 @@ Did you love this workshop? Let us know in the comments of this [LinkedIn post](
 
 References:
 -  [Containerlab](https://containerlab.dev/)
--  [SR-LABS](https://github.com/srl-labs)
+-  [SRL-LABS](https://github.com/srl-labs)
 -  [Learn SR Linux](https://learn.srlinux.dev/)
 -  [CLAB Discord](https://discord.gg/vAyddtaEV9)

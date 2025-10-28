@@ -72,9 +72,11 @@ Connect to Host
 Select SSH host
     ![ip-address](images/ip-address.png)
 
-# If you are unable to install Visual Studio Code on your laptop. You can use the code-server instance for a browser-based Visual Studio code instance.
-#    
-#    Simply navigate to `<Group ID>.srexperts.net` in your browser to access the code-server. You can skip the next installation step if using this method.
+> [!NOTE]
+>If you are unable to install Visual Studio Code on your laptop. You can use the code-server instance for a browser-based Visual Studio code instance.
+
+> [!NOTE]
+>Simply navigate to `<Group ID>.srexperts.net` in your browser to access the code-server. You can skip the next installation step if using this method.
 
 ### Installation of the extension
 
