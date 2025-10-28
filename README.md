@@ -11,3 +11,9 @@ A list of workshop modules. Each module is a self-contained guide that can be fo
 7. [VS Code extension](50-clab-vscode-extension/README.md)
 
 Did you love this workshop? Let us know in the comments of this [LinkedIn post](TBD).
+
+References:
+-  [Containerlab](https://containerlab.dev/)
+-  [SR-LABS](https://github.com/srl-labs)
+-  [Learn SR Linux](https://learn.srlinux.dev/)
+-  [CLAB Discord](https://discord.gg/vAyddtaEV9)

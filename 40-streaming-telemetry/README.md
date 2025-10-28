@@ -30,7 +30,34 @@ The streaming telemetry lab' [topology file](https://github.com/srl-labs/srl-tel
 - port exposure to the host to make the lab services accessible from the outside
 - using of `group` parameter to influence lab nodes ordering in the graph products
 
-As you can see, this topo file is not a joke, and once the deployment finishes, you might want to understand what exactly was deployed and how the topology is structured. Enter graphs.
+As you can see, this topo file is not a joke, and once the deployment finishes, you might want to understand what exactly was deployed and how the topology is structured.    
+
+## Streaming Telemetry stack
+
+As the lab name suggests, telemetry is at its core. The following telemetry stack is used in this lab:
+
+| Role                | Software                              |
+| ------------------- | ------------------------------------- |
+| Telemetry collector | [gnmic](https://gnmic.openconfig.net) |
+| Time-Series DB      | [prometheus](https://prometheus.io)   |
+| Visualization       | [grafana](https://grafana.com)        |
+
+Using containerlab's ability to expose ports of the containers to the host, telemetry services are available on the host machine, Access Grafana:
+
+* Grafana: <http://localhost:3000>. Anonymous access is enabled; no credentials are required. If you want to act as an admin, use `admin/admin` credentials.
+
+
+To run traffic between the nodes, leverage `traffic.sh` control script.
+To start the traffic:
+
+* `bash traffic.sh start all` - start traffic between all nodes
+
+As a result, the traffic will be generated between the clients and the traffic rate will be reflected on the grafana dashboard.
+
+<https://github.com/srl-labs/srl-telemetry-lab/assets/5679861/158914fc-9100-416b-8b0f-cde932895cec>
+
+For more details refer to the [Nokia SR Linux Streaming Telemetry Lab](https://github.com/srl-labs/srl-telemetry-lab/tree/main).
+
 
 ## Containerlab and graphing options
 
